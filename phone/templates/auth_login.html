@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block title %}Login{% endblock %} 
+{%block content%}
+<div class="row mt-3 text-center d-flex justify-content-center">
+  <div class="col-sm-8">
+    <form action="{% url 'auth_login' %}" method="post">
+      {%csrf_token%}
+      {{form.as_p}}
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <div class="pt-2">
+      <strong>New to E Commerce? <a href="{% url 'auth_register' %}"> Create New Account</a></strong>
+    </div>
+  </div>
+</div>
+{% endblock %}

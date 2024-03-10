@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block title %}Home{% endblock%} {% block content %}
+<body
+  style="
+    background-image: linear-gradient(
+      to right top,
+      #d16ba5,
+      #c777b9,
+      #ba83ca,
+      #aa8fd8,
+      #9a9ae1,
+      #8aa7ec,
+      #79b3f4,
+      #69bff8,
+      #52cffe,
+      #41dfff,
+      #46eefa,
+      #5ffbf1
+    );
+  "
+>
+  <div class="row mt-2 text-center d-flex justify-content-center my-5 py-5">
+    <div class="col-sm-3 my-1">
+      <a href="{% url 'show_phone' %}">
+        <div class="card">
+          <div class="card-body rounded" style="background-color: #B5C0D0">
+            <i class="bi bi-phone text-center" style="font-size: 60px"></i>
+            <h6 class="fw-bold">الهواتف الذكية</h6>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-sm-3 my-1">
+      <a href="{% url 'show_furniture' %}">
+        <div class="card">
+          <div class="card-body rounded" style="background-color: #EED3D9">
+            <i class="bi bi-house text-center" style="font-size: 60px"></i>
+            <h6 class="fw-bold">أثاث المنزل</h6>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</body>
+{% endblock %}
