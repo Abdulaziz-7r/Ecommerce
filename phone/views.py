@@ -91,7 +91,7 @@ def add_to_cart(request, product_id):
     )
     cart_data.save()
     request.session["cart_count"] = int(request.session["cart_count"]) + 1
-    return redirect("/showphone/")
+    return redirect("/cart/")
 
 
 @login_required(login_url="auth_login")
@@ -117,4 +117,29 @@ def buy_now(request, product_id):
         context = {"cart": cart, "productname": product, "request": request}
     except:
         return HttpResponse("<h1>Add the Product to your Cart First</h1>")
+    return HttpResponse(template.render(context=context))
+
+
+@login_required(login_url="auth_login")
+def cart(request):
+    try:
+        template = loader.get_template("cart.html")
+        current_user_id = request.user.id
+        cart_list = []
+        total = 0
+        cart = Cart.objects.all().filter(id_user=current_user_id)
+        for item in cart:
+            product = Items.objects.get(id=item.id_product)
+            details = ItemDetails.objects.get(itemsid=item.id_product)
+            data = {
+                "name": product.name,
+                "color": details.color,
+                "image": details.image,
+                "net": item.net,
+            }
+            cart_list.append(data)
+            total += data["net"]
+        context = {"cart": cart_list, "total": total, "request": request}
+    except:
+        return HttpResponse("<h1>Your Cart is Empty!!</h1>")
     return HttpResponse(template.render(context=context))

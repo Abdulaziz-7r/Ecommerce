@@ -30,6 +30,7 @@ urlpatterns = [
     path("auth_register/", phv.auth_register, name="auth_register"),
     path("auth_logout/", phv.auth_logout, name="auth_logout"),
     path("checkout/", phv.checkout, name="checkout"),
+    path("cart/", phv.cart, name="cart"),
     path("add_to_cart/<int:product_id>/", phv.add_to_cart, name="add_to_cart"),
     path("buy_now/<int:product_id>/", phv.buy_now, name="buy_now"),
     path("api/itemlist/all/", p_api.get_all_items_list, name="get_all_items_list"),

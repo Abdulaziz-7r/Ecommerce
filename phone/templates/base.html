@@ -159,7 +159,7 @@
             <ul class="navbar-nav ms-auto">
               {% if request.user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'home'%}"
+                <a class="nav-link text-primary" href="{% url 'home'%}"
                   >Welcome {{request.user.username}}</a
                 >
               </li>
@@ -179,9 +179,9 @@
               {% endif %}
               <li class="nav-item">
                 <h3>
-                  <a class="text-white" href="{% url 'checkout'%}"
+                  <a class="text-white" href="{% url 'cart'%}"
                     ><i class="bi bi-cart3"></i>
-                    <span class="badge rounded-pill bg-danger text-black fs-6"
+                    <span class="badge rounded-pill bg-primary text-white fs-6"
                       >{{ request.session.cart_count}}</span
                     >
                   </a>
