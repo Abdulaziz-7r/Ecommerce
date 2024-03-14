@@ -132,6 +132,7 @@ def cart(request):
             product = Items.objects.get(id=item.id_product)
             details = ItemDetails.objects.get(itemsid=item.id_product)
             data = {
+                "id": item.id,
                 "name": product.name,
                 "color": details.color,
                 "image": details.image,
@@ -143,3 +144,10 @@ def cart(request):
     except:
         return HttpResponse("<h1>Your Cart is Empty!!</h1>")
     return HttpResponse(template.render(context=context))
+
+
+def delete_item_phone(request, id):
+    product = Cart.objects.get(id=id)
+    product.delete()
+    request.session["cart_count"] = int(request.session["cart_count"]) - 1
+    return redirect("/cart")

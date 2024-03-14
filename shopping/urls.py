@@ -59,4 +59,5 @@ urlpatterns = [
         name="buy_now_furniture",
     ),
     path("checkout_furniture/", frv.checkout_furniture, name="checkout_furniture"),
+    path("delete_item_phone/<int:id>/", phv.delete_item_phone, name="delete_item_phone"),
 ]
